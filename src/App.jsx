@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./Navbar";
 import Postform from "./Postform";
 import Home from "./Home";
+import Aipost from "./Aipost";
 
 function App() {
   const [posts, setPosts] = useState([]); // State to hold all posts
@@ -19,6 +20,10 @@ function App() {
         <Route
           path="/postform"
           element={<Postform addPost={addPost} />} // Pass addPost as prop
+        />
+        <Route
+          path="/aipost"
+          element={<Aipost addPost={addPost} />} // Pass addPost as prop
         />
       </Routes>
     </Router>

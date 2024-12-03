@@ -1,24 +1,32 @@
 import React, { useState } from "react";
+import axios from "axios";
 
-function Postform({ addPost }) {
+function Postform() {
   const [post, setPost] = useState({ title: "", desc: "" });
-  const [message, setMessage] = useState(""); // New state for success message
+  const [message, setMessage] = useState(""); // State for feedback message
 
-  function addPostHandler(event) {
+  // Function to handle form submission
+  const addPostHandler = async (event) => {
     event.preventDefault();
     if (post.title.trim() && post.desc.trim()) {
-      addPost(post); // Use the passed `addPost` function to add a post
-      setPost({ title: "", desc: "" }); // Reset form
-      setMessage("Post Submitted!"); // Set success message
+      try {
+        // Sending post data to the backend (Node.js/Express server)
+        await axios.post("http://localhost:5000/posts", post); // Adjust URL based on your server
+        setPost({ title: "", desc: "" }); // Reset form
+        setMessage("Post Submitted!"); // Success message
+      } catch (error) {
+        setMessage("Failed to submit post!"); // Error message
+      }
     } else {
       setMessage("Please fill in both the title and description.");
     }
-  }
+  };
 
-  function handleInputChange(e) {
+  // Function to handle input changes
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
     setPost((prev) => ({ ...prev, [name]: value }));
-  }
+  };
 
   return (
     <div className="mt-20">
