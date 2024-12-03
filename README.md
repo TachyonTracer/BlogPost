@@ -66,7 +66,6 @@ post-app/
 │   ├── models/             # MongoDB models (Post)
 │   ├── routes/             # API routes
 │   ├── package.json       # Backend dependencies & scripts
-├── frontend/               # Frontend directory (React with Vite)
 │   ├── src/
 │   │   ├── components/     # React components (Navbar, Home, PostForm)
 │   │   ├── App.jsx         # Main app component

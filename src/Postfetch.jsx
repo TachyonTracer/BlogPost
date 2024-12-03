@@ -1,7 +1,7 @@
 export async function getPostFromMistral(postTopic) {
     try {
       // Make a POST request to the backend API to fetch the post
-      const response = await fetch("http://localhost:3000/api/get-post", {
+      const response = await fetch("http://localhost:5000/api/get-post", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ topic: postTopic }),
