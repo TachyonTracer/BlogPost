@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+const serverpost = import.meta.env.VITE_SERVER_URL;
+
 function Postform() {
   const [post, setPost] = useState({ title: "", desc: "" });
   const [message, setMessage] = useState(""); // State for feedback message
@@ -11,7 +13,7 @@ function Postform() {
     if (post.title.trim() && post.desc.trim()) {
       try {
         // Sending post data to the backend (Node.js/Express server)
-        await axios.post("http://localhost:5000/posts", post); // Adjust URL based on your server
+        await axios.post(serverpost, post); // Adjust URL based on your server
         setPost({ title: "", desc: "" }); // Reset form
         setMessage("Post Submitted!"); // Success message
       } catch (error) {

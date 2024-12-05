@@ -3,7 +3,9 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const axios = require("axios");
-require("dotenv").config(); // Load environment variables from .env
+require("dotenv").config(); 
+
+const mongoUrl = process.env.MONGODB_URI
 
 // Initialize the app
 const app = express();
@@ -12,7 +14,7 @@ app.use(bodyParser.json());
 
 // Connect to MongoDB (replace with your MongoDB URI)
 mongoose
-  .connect("mongodb://localhost:27017/blogpost", { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(mongoUrl)
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
