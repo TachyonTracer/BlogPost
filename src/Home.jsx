@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-const serverpost = import.meta.env.VITE_SERVER_URL
+const homepost = import.meta.env.VITE_HOME_URL
 const Home = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get(serverpost); // Fetch posts from server
+        const response = await axios.get(homepost); // Fetch posts from server
         setPosts(response.data);
       } catch (error) {
         console.error('Error fetching posts:', error);
