@@ -37,7 +37,7 @@ app.get("/posts", async (req, res) => {
   }
 });
 
-app.post("/posts", async (req, res) => {
+app.post("/post", async (req, res) => {
   const { title, desc } = req.body;
   const newPost = new Post({ title, desc });
 
